@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #00FF00;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* CRT Effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 2px,
+        rgba(0, 255, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Terminal Header */
+.terminal-header {
+    background: #001100;
+    border: 2px solid #00FF00;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+.terminal-title {
+    font-weight: bold;
+    font-size: 16px;
+    color: #00FFFF;
+    text-shadow: 0 0 10px #00FFFF;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.control-btn {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #00FF00;
+}
+
+.close { background: #FF0000; }
+.minimize { background: #FFB000; }
+.maximize { background: #00FF00; }
+
+/* Main Terminal */
+.terminal-body {
+    background: #000;
+    border: 2px solid #00FF00;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    min-height: 80vh;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    position: relative;
+}
+
+/* Boot sequence */
+.boot-text {
+    color: #00FF00;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+/* Navigation */
+.nav-bar {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #00FF00;
+    padding-bottom: 10px;
+}
+
+.nav-item {
+    color: #00FFFF;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.nav-item:hover, .nav-item.active {
+    border: 1px solid #00FFFF;
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Content Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Journal Entry */
+.journal-entry {
+    background: rgba(0, 50, 0, 0.3);
+    border: 1px solid #00FF00;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.entry-header {
+    color: #00FFFF;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #00FFFF;
+}
+
+.entry-meta {
+    color: #FFB000;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.entry-content {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.entry-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: rgba(0, 255, 0, 0.2);
+    border: 1px solid #00FF00;
+    padding: 2px 8px;
+    font-size: 11px;
+    border-radius: 3px;
+}
+
+/* Progress Panel */
+.progress-panel {
+    background: rgba(0, 20, 50, 0.3);
+    border: 1px solid #00FFFF;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.panel-title {
+    color: #00FFFF;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 0 0 5px #00FFFF;
+}
+
+.progress-bar {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #00FF00;
+    height: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #00FF00, #00FFFF);
+    height: 100%;
+    transition: width 2s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.progress-label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 11px;
+    z-index: 1;
+    color: #000;
+    font-weight: bold;
+}
+
+/* Code Block */
+.code-block {
+    background: #001122;
+    border: 1px solid #00FFFF;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    position: relative;
+    overflow-x: auto;
+}
+
+.code-header {
+    color: #FFB000;
+    font-size: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copy-btn {
+    background: none;
+    border: 1px solid #FFB000;
+    color: #FFB000;
+    padding: 2px 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 176, 0, 0.1);
+}
+
+/* Command Line */
+.command-line {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00FF00;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prompt {
+    color: #FFB000;
+    font-weight: bold;
+}
+
+.command-input {
+    background: none;
+    border: none;
+    color: #00FF00;
+    font-family: inherit;
+    flex: 1;
+    outline: none;
+}
+
+/* Cursor Animation */
+.cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Glitch effect */
+.glitch:hover {
+    animation: glitch 0.3s ease-in-out;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* ASCII Art */
+.ascii-art {
+    color: #00FFFF;
+    font-size: 10px;
+    line-height: 1;
+    text-align: center;
+    margin: 20px 0;
+    white-space: pre;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-bar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .terminal-title {
+        font-size: 14px;
+    }
+}

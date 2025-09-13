@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCNP Journey Terminal - Network Engineer's Log</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Terminal Header -->
+        <div class="terminal-header">
+            <div class="terminal-title">CCNP_JOURNEY_TERMINAL v2.1.0 - Network Engineer's Log</div>
+            <div class="terminal-controls">
+                <div class="control-btn close"></div>
+                <div class="control-btn minimize"></div>
+                <div class="control-btn maximize"></div>
+            </div>
+        </div>
+        
+        <!-- Terminal Body -->
+        <div class="terminal-body">
+            <!-- Boot Sequence -->
+            <div class="boot-text">
+                SYSTEM BOOT COMPLETE...<br>
+                LOADING NETWORK ENGINEER PROTOCOLS...<br>
+                CISCO IOS EMULATION: READY<br>
+                CCNP PROGRESS TRACKER: INITIALIZED<br>
+                ><span class="cursor">_</span>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="nav-bar">
+                <a href="#" class="nav-item active glitch">JOURNAL</a>
+                <a href="#" class="nav-item glitch">CODE_REPO</a>
+                <a href="#" class="nav-item glitch">LAB_NOTES</a>
+                <a href="#" class="nav-item glitch">PROGRESS</a>
+                <a href="#" class="nav-item glitch">TOPOLOGY</a>
+            </div>
+            
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Main Content -->
+                <div class="main-content">
+                    <!-- Journal Entry -->
+                    <div class="journal-entry">
+                        <div class="entry-header">Day 45: OSPF Area Configuration Deep Dive</div>
+                        <div class="entry-meta">
+                            DATE: 2025-09-13 | CATEGORY: CCNP_ENTERPRISE | DIFFICULTY: ★★★☆☆
+                        </div>
+                        <div class="entry-content">
+                            Today I tackled OSPF multi-area configurations and learned about LSA types. The concept of area border routers (ABRs) finally clicked when I visualized the topology using GNS3. Key insights:
+                            <br><br>
+                            • Area 0 (backbone) is mandatory for inter-area routing<br>
+                            • LSA Type 3 summary advertisements between areas<br>
+                            • Stub areas reduce routing table size significantly<br>
+                        </div>
+                        
+                        <!-- Code Block -->
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>IOS Configuration - OSPF Multi-Area</span>
+                                <button class="copy-btn" onclick="copyCode()">COPY</button>
+                            </div>
+                            <div class="code-content">
+router ospf 100<br>
+&nbsp;router-id 1.1.1.1<br>
+&nbsp;area 10 stub<br>
+&nbsp;network 10.1.1.0 0.0.0.255 area 0<br>
+&nbsp;network 10.2.1.0 0.0.0.255 area 10<br>
+&nbsp;area 10 range 10.2.0.0 255.255.0.0<br>
+!<br>
+interface fa0/0<br>
+&nbsp;ip ospf priority 100
+                            </div>
+                        </div>
+                        
+                        <div class="entry-tags">
+                            <span class="tag">OSPF</span>
+                            <span class="tag">ROUTING</span>
+                            <span class="tag">CCNP-ENTERPRISE</span>
+                            <span class="tag">LSA</span>
+                            <span class="tag">ABR</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Command Line -->
+                    <div class="command-line">
+                        <span class="prompt">root@ccnp-lab:~$</span>
+                        <input type="text" class="command-input" placeholder="Enter command or search..." />
+                        <span class="cursor">_</span>
+                    </div>
+                    
+                    <!-- ASCII Network Diagram -->
+                    <div class="ascii-art">
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│    Area 0   │────▶│     ABR     │────▶│   Area 10   │
+│  (Backbone) │     │   Router    │     │   (Stub)    │
+│   10.1.1.0  │     │             │     │  10.2.1.0   │
+└─────────────┘     └─────────────┘     └─────────────┘
+      │                     │                     │
+      ▼                     ▼                     ▼
+   LSA Type 1            LSA Type 3           LSA Type 1
+   (Router)              (Summary)            (Router)
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Progress Panel -->
+                    <div class="progress-panel">
+                        <div class="panel-title">CCNP PROGRESS STATUS</div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                                <div class="progress-label">ENCOR 75%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%;"></div>
+                                <div class="progress-label">ENARSI 45%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 20%;"></div>
+                                <div class="progress-label">LABS 20%</div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; text-align: center; font-size: 12px;">
+                            NEXT MILESTONE:<br>
+                            <span style="color: #FFB000;">OSPF Redistribution Lab</span><br>
+                            ETA: 3 days
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity -->
+                    <div class="progress-panel" style="margin-top: 20px;">
+                        <div class="panel-title">RECENT ACTIVITY</div>
+                        <div style="font-size: 11px; line-height: 1.6;">
+                            • BGP Path Attributes Study<br>
+                            • EIGRP Metric Calculation<br>
+                            • STP Root Bridge Config<br>
+                            • VRF-Lite Implementation<br>
+                            • Python Netmiko Scripts<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #FFB000;">
+                [SYSTEM STATUS: OPERATIONAL] | [UPTIME: 45 days] | [NEXT_BOOT: CCNP_CERTIFIED]
+            </div>
+        </div>
+    </div>
+    
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
