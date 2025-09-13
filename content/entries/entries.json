@@ -1,0 +1,38 @@
+## Step 3: Entries Index File
+Create `content/entries.json`:
+```json
+{
+  "entries": [
+    {
+      "id": "ospf-deep-dive",
+      "filename": "2025-09-13-ospf-deep-dive.md",
+      "title": "Day 45: OSPF Area Configuration Deep Dive",
+      "date": "2025-09-13",
+      "category": "CCNP_ENTERPRISE",
+      "tags": ["OSPF", "ROUTING", "LSA", "ABR"],
+      "difficulty": 3,
+      "status": "completed"
+    },
+    {
+      "id": "bgp-path-attributes",
+      "filename": "2025-09-14-bgp-path-attributes.md",
+      "title": "Day 46: BGP Path Selection Process",
+      "date": "2025-09-14",
+      "category": "CCNP_ENTERPRISE", 
+      "tags": ["BGP", "ROUTING", "PATH-SELECTION"],
+      "difficulty": 4,
+      "status": "in-progress"
+    }
+  ],
+  "categories": [
+    "CCNP_ENTERPRISE",
+    "CCNP_SERVICE_PROVIDER", 
+    "LABS",
+    "PYTHON_AUTOMATION",
+    "GENERAL_NETWORKING"
+  ],
+  "stats": {
+    "total_entries": 2,
+    "last_updated": "2025-09-13"
+  }
+}

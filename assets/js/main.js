@@ -338,3 +338,56 @@ function updateProgress(category, percentage) {
 window.copyCode = copyCode;
 window.addJournalEntry = addJournalEntry;
 window.updateProgress = updateProgress;
+
+// Content management integration
+document.addEventListener('DOMContentLoaded', function() {
+    // Your existing initialization code...
+    
+    // Load dynamic content
+    if (typeof contentManager !== 'undefined') {
+        contentManager.displayEntries();
+    }
+});
+
+// Add search functionality to existing command processor
+const originalProcessCommand = processCommand;
+processCommand = function(command) {
+    if (command.startsWith('search ')) {
+        const query = command.substring(7);
+        searchEntries(query);
+        return;
+    }
+    originalProcessCommand(command);
+};
+
+function searchEntries(query) {
+    // Implementation for searching through entries
+    const entries = document.querySelectorAll('.journal-entry');
+    let results = [];
+    
+    entries.forEach(entry => {
+        const text = entry.textContent.toLowerCase();
+        if (text.includes(query.toLowerCase())) {
+            results.push(entry.querySelector('.entry-header').textContent);
+        }
+    });
+    
+    const output = document.createElement('div');
+    output.className = 'command-output';
+    output.style.color = '#00FF00';
+    output.style.marginTop = '10px';
+    output.style.fontSize = '12px';
+    
+    if (results.length > 0) {
+        output.innerHTML = `
+            Search results for "${query}":<br>
+            ${results.map(result => `• ${result}`).join('<br>')}
+        `;
+    } else {
+        output.innerHTML = `No entries found matching "${query}"`;
+        output.style.color = '#FFB000';
+    }
+    
+    const commandLine = document.querySelector('.command-line');
+    commandLine.parentNode.insertBefore(output, commandLine.nextSibling);
+}
