@@ -7,7 +7,7 @@
       "date": "2025-09-13",
       "category": "CCNP_ENTERPRISE",
       "tags": ["OSPF", "ROUTING", "LSA", "ABR"],
-      "difficulty": 3,
+      "difficulty": 4,
       "status": "completed"
     },
     {
@@ -19,6 +19,16 @@
       "tags": ["BGP", "ROUTING", "PATH-SELECTION"],
       "difficulty": 4,
       "status": "in-progress"
+    },
+    {
+      "id": "fhrp-deep-dive",
+      "filename": "2025-09-15-hsrp-vrrp.md",
+      "title": "Day 46: BGP Path Selection Process",
+      "date": "2025-09-14",
+      "category": "CCNP_ENTERPRISE", 
+      "tags": ["FHRP", "HSRP", "VRRP"],
+      "difficulty": 2,
+      "status": "in-progress"
     }
   ],
   "categories": [
@@ -29,8 +39,8 @@
     "GENERAL_NETWORKING"
   ],
   "stats": {
-    "total_entries": 2,
-    "last_updated": "2025-09-13"
+    "total_entries": 3,
+    "last_updated": "2025-09-15"
   }
 }
 
